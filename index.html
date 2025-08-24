@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #2E3440; /* Nord Polar Night */
+            --fg-color: #D8DEE9; /* Nord Snow Storm */
+            --timer-color: #EBCB8B; /* Nord Frost - Yellow */
+            --button-bg: #4C566A; /* Nord Polar Night - Lighter */
+            --button-hover: #5E81AC; /* Nord Frost - Blue */
+            --break-bg: #434C5E;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--fg-color);
+            transition: background-color 0.5s;
+        }
+
+        .timer-container {
+            text-align: center;
+        }
+
+        #status {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #timer {
+            font-size: 100px;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--timer-color);
+        }
+
+        .buttons button {
+            background-color: var(--button-bg);
+            color: var(--fg-color);
+            border: none;
+            padding: 15px 30px;
+            margin: 0 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: inherit;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: var(--button-hover);
+        }
+    </style>
+</head>
+<body>
+
+<div class="timer-container">
+    <h1 id="status">Fokus</h1>
+    <div id="timer">25:00</div>
+    <div class="buttons">
+        <button id="startStopBtn">Mulai</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+</div>
+
+<script>
+    // Konfigurasi waktu (dalam menit)
+    const WORK_TIME = 25;
+    const BREAK_TIME = 5;
+
+    // Ambil elemen dari DOM
+    const timerDisplay = document.getElementById('timer');
+    const statusDisplay = document.getElementById('status');
+    const startStopBtn = document.getElementById('startStopBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const body = document.body;
+
+    // Variabel state
+    let timerInterval;
+    let timeLeft = WORK_TIME * 60;
+    let isRunning = false;
+    let isWorkSession = true;
+
+    // Audio untuk notifikasi
+    const notificationSound = new Audio('https://www.soundjay.com/buttons/sounds/button-16.mp3');
+
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        document.title = `${timerDisplay.textContent} - ${isWorkSession ? 'Fokus' : 'Istirahat'}`;
+    }
+
+    function startTimer() {
+        isRunning = true;
+        startStopBtn.textContent = 'Jeda';
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateDisplay();
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                notificationSound.play();
+                switchSession();
+            }
+        }, 1000);
+    }
+
+    function stopTimer() {
+        isRunning = false;
+        startStopBtn.textContent = 'Lanjut';
+        clearInterval(timerInterval);
+    }
+
+    function switchSession() {
+        isWorkSession = !isWorkSession;
+        if (isWorkSession) {
+            timeLeft = WORK_TIME * 60;
+            statusDisplay.textContent = 'Fokus';
+            body.style.backgroundColor = 'var(--bg-color)';
+        } else {
+            timeLeft = BREAK_TIME * 60;
+            statusDisplay.textContent = 'Istirahat';
+            body.style.backgroundColor = 'var(--break-bg)';
+        }
+        updateDisplay();
+        startTimer(); // Otomatis mulai sesi berikutnya
+    }
+    
+    function resetTimer() {
+        stopTimer();
+        isWorkSession = true;
+        timeLeft = WORK_TIME * 60;
+        statusDisplay.textContent = 'Fokus';
+        startStopBtn.textContent = 'Mulai';
+        body.style.backgroundColor = 'var(--bg-color)';
+        updateDisplay();
+    }
+
+    startStopBtn.addEventListener('click', () => {
+        if (isRunning) {
+            stopTimer();
+        } else {
+            startTimer();
+        }
+    });
+
+    resetBtn.addEventListener('click', resetTimer);
+
+    // Inisialisasi tampilan
+    updateDisplay();
+</script>
+
+</body>
+</html>

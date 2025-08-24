@@ -1,0 +1,21 @@
+# Lingkungan Virtual Python
+venv/
+.venv/
+
+# File environment berisi kunci rahasia
+.env
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# File persistence bot
+bot_persistence
+
+# Folder output
+output_files/
+input_files/
+
+# Kredensial Google (SANGAT RAHASIA)
+credentials.json
+token.json
