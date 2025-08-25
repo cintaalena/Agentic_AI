@@ -18,6 +18,11 @@ Sebuah bot Telegram cerdas yang dirancang untuk membantu mahasiswa dan akademisi
     -   `/stopfokus`: Mengakhiri sesi dan secara otomatis memicu sesi evaluasi, di mana bot akan membuat kuis singkat tentang topik yang baru dipelajari untuk menguji pemahaman.
 -   **Routing Niat Cerdas**: Bot dapat membedakan antara berbagai jenis permintaan (misalnya, membuat pengingat vs. mencari paper) tanpa perlu perintah yang kaku, sehingga interaksi terasa lebih natural.
 
+##workflow kerja 
+
+<img width="2048" height="2048" alt="Gemini_Generated_Image_l3nf6rl3nf6rl3nf" src="https://github.com/user-attachments/assets/928f5734-0e0d-4331-a17a-7d4fa2064b42" />
+
+
 ## 🤫 Fitur Lanjutan: Listener Mode Fokus Lokal
 
 Fitur ini bersifat **opsional dan ditujukan untuk pengguna tingkat lanjut**. Script `local_listener.py` berinteraksi langsung dengan sistem operasi Anda (misalnya, memodifikasi file `hosts` untuk memblokir situs web) dan **memerlukan hak Administrator** untuk berjalan. Gunakan dengan hati-hati.
