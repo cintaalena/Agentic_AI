@@ -55,54 +55,6 @@ Fitur ini bersifat **opsional dan ditujukan untuk pengguna tingkat lanjut**. Scr
 
 ## ⚙️ Panduan Instalasi & Konfigurasi
 
-Berikut adalah langkah-langkah untuk menjalankan bot ini di komputer Anda sendiri.
-
-### 1. Clone Repository
-Salin proyek ini ke komputer Anda.
-
-git clone 
-cd Agentic_AI
-
-###2. Buat dan Aktifkan Virtual Environment
-Sangat disarankan untuk menggunakan lingkungan virtual agar tidak mengganggu instalasi Python utama Anda.
-
-# Buat venv
-python -m venv venv
-
-# Aktifkan venv (untuk Windows)
-.\venv\Scripts\activate
-
-##3. Instal Semua Paket yang Dibutuhkan
-Instal semua library yang diperlukan dengan perintah berikut:
-
-pip install --upgrade pip
-pip install python-telegram-bot google-generativeai python-dotenv spacy PyMuPDF python-docx langdetect nltk httpx "python-telegram-bot[job-queue]" google-api-python-client google-auth-httplib2 google-auth-oauthlib
-
-#Setelah itu, unduh model bahasa untuk Spacy:
-python -m spacy download en_core_web_sm
-python -m spacy download xx_ent_wiki_sm
-
-##4. Konfigurasi Kunci API (.env)
-Buat sebuah file baru di folder utama proyek dengan nama .env. File ini akan berisi semua kunci rahasia Anda.
-
-# Ganti dengan token dari BotFather di Telegram
-TELEGRAM_BOT_TOKEN="XXXXXXXXXXXXXXXXXXXXX"
-
-# Ganti dengan API Key dari Google AI Studio
-GEMINI_API_KEY="XXXXXXXXXXXXXXXXXXXXX"
-
-# (Opsional) Ganti dengan ID channel Telegram untuk fitur Mode Fokus
-TELEGRAM_CHANNEL_ID="XXXXXXXXXXXXXXXX"
-
-#Konfigurasi Google Calendar API
-Untuk fitur pengingat, Anda memerlukan akses ke Google Calendar API.
-
-Ikuti panduan Google untuk membuat OAuth 2.0 Client ID.
-
-Unduh file JSON yang diberikan dan ganti namanya menjadi credentials.json, lalu letakkan di folder utama proyek Anda.
-
-Saat pertama kali menjalankan fitur pengingat, bot akan membuka browser dan meminta Anda untuk login dan memberikan izin. Proses ini akan secara otomatis membuat file token.json untuk sesi berikutnya.
-
 ##▶️ Cara Menjalankan Bot Utama
 Pastikan virtual environment Anda sudah aktif.
 
