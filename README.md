@@ -53,6 +53,21 @@ Fitur ini bersifat **opsional dan ditujukan untuk pengguna tingkat lanjut**. Scr
 -   **Platform**: Telegram
 -   **AI Model**: Google Gemini 1.5 Flash
 
+## Model Bahasa (LLM) 🧠
+Yang Digunakan: Google Gemini API (Cloud-based).
+
+Keterangan: Seluruh kecerdasan buatan sistem ini ditenagai oleh model Gemini milik Google. Aplikasi ini harus terhubung ke internet dan memiliki API key yang valid untuk bisa berfungsi.
+
+## Arsitektur Agen 🤖
+Jenis: Single-Agent dari segi implementasi, namun dirancang dengan pola Multi-Agent secara konseptual.
+
+Keterangan: Program berjalan sebagai satu proses tunggal (single-agent), tetapi desainnya sangat modular, menyerupai tim spesialis (summarizer_highlighter, quiz_generator) yang dikoordinasikan oleh satu manajer utama.
+
+## Database 🗄️
+Jenis: Penyimpanan Berbasis File (JSON & Pickle).
+
+Keterangan: Sistem ini menggunakan file sederhana untuk menyimpan data sementara seperti daftar tugas, status mode fokus, dan "ingatan" percakapan bot. Ini adalah ciri khas prototipe, bukan aplikasi skala produksi.
+
 ## ⚙️ Panduan Instalasi & Konfigurasi
 
 ##▶️ Cara Menjalankan Bot Utama
