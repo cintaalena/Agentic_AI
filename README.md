@@ -1,4 +1,4 @@
-# Asisten AI Akademik - Telegram Bot
+# N.E.R.D - Telegram Bot
 
 Sebuah bot Telegram cerdas yang dirancang untuk membantu mahasiswa dan akademisi dalam mengelola tugas-tugas mereka. Bot ini menggunakan kekuatan AI generatif (Google Gemini) untuk memahami bahasa alami dan mengotomatiskan berbagai pekerjaan seperti meringkas dokumen, menyorot poin penting, mengelola jadwal, dan mencari referensi ilmiah.
 
